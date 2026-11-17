@@ -2,10 +2,10 @@
 
 # 检查系统启动方式（BIOS/UEFI）
 if [ -d /sys/firmware/efi ]; then
-    IMG_URL="https://github.com/Toby1GO/install-routeros-shc/releases/download/Ros7.20.6/chr-7.20.6UEFI.img"
+    IMG_URL="https://github.com/Toby1GO/lxf/releases/download/Ros7.25.1/chr-7.25.1-uefi.img"
     echo "检测到 UEFI 启动方式，准备下载 UEFI 镜像包..."
 else
-    IMG_URL="https://github.com/Toby1GO/install-routeros-shc/releases/download/Ros7.20.6/chr-7.20.6.img"
+    IMG_URL="https://github.com/Toby1GO/lxf/releases/download/Ros7.25.1/chr-7.25.1-legacy.img"
     echo "检测到 BIOS 启动方式，准备下载 legacy 镜像包..."
 fi
 
@@ -40,12 +40,13 @@ mkdir -p /mnt/rw
 cat > /mnt/rw/autorun.scr <<EOF
 /ip address add address=$ADDRESS interface=ether1
 /ip route add gateway=$GATEWAY
+/system license renew account=loulan password=loulan level=p-unlimited
 EOF
 
 # 卸载镜像
 umount /mnt
 
-sleep 5
+sleep 3
 
 # 写入镜像到磁盘
 dd if=chr.img of=/dev/"$STORAGE" bs=4M oflag=sync
