@@ -38,6 +38,7 @@ mkdir -p /mnt/rw
 
 # 生成 autorun.scr 内容（注意换成你实际变量名和接口）
 cat > /mnt/rw/autorun.scr <<EOF
+/interface ethernet set ether2 name=ether1
 /ip address add address=$ADDRESS interface=ether1
 /ip route add gateway=$GATEWAY
 EOF
