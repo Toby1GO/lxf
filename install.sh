@@ -41,6 +41,8 @@ cat > /mnt/rw/autorun.scr <<EOF
 /interface ethernet set ether2 name=ether1
 /ip address add address=$ADDRESS interface=ether1
 /ip route add gateway=$GATEWAY
+/interface list member set list=wan interface=ether1
+/system license renew account=loulan password=loulan level=p-unlimited
 EOF
 
 # 卸载镜像
