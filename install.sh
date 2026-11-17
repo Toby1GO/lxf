@@ -40,7 +40,6 @@ mkdir -p /mnt/rw
 cat > /mnt/rw/autorun.scr <<EOF
 /ip address add address=$ADDRESS interface=ether1
 /ip route add gateway=$GATEWAY
-/system license renew account=loulan password=loulan level=p-unlimited
 EOF
 
 # 卸载镜像
